@@ -7,44 +7,6 @@
 
 import SwiftUI
 
-// MARK: - FPS Counter
-class FPSCounter: ObservableObject {
-    @Published var fps: Double = 0
-    private var frameCount = 0
-    private var lastTime: TimeInterval = 0
-    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
-    init() {
-        lastTime = CACurrentMediaTime()
-    }
-    
-    func update() {
-        frameCount += 1
-        let currentTime = CACurrentMediaTime()
-        if currentTime - lastTime >= 1.0 {
-            fps = Double(frameCount)
-            frameCount = 0
-            lastTime = currentTime
-        }
-    }
-}
-
-struct FPSCounterView: View {
-    @StateObject private var counter = FPSCounter()
-    let timer = Timer.publish(every: 1/120, on: .main, in: .common).autoconnect()
-    
-    var body: some View {
-        Text("FPS: \(Int(counter.fps))")
-            .font(.system(.headline, design: .monospaced))
-            .padding(8)
-            .background(Color(.systemGray6))
-            .cornerRadius(8)
-            .onReceive(timer) { _ in
-                counter.update()
-            }
-    }
-}
-
 // MARK: - Rotating Image Component
 struct RotatingImage: View {
     let imageName: String
@@ -98,9 +60,6 @@ struct ListItem: View {
 struct ContentView: View {
     var body: some View {
         VStack(spacing: 0) {
-            FPSCounterView()
-                .padding(.top, 8)
-            
             ScrollView {
                 LazyVStack(spacing: 0) {
                     ForEach(0..<300, id: \.self) { index in
