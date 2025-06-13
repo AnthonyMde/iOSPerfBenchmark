@@ -41,7 +41,7 @@ struct HorizontalImageList: View {
             }
             .padding(.horizontal)
         }
-        .background(Color(.systemGray6).opacity(0.3))
+        .background(Color(.white))
     }
 }
 
