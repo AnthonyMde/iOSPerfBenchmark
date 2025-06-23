@@ -9,9 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ImageListBenchmark()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .transaction { $0.animation = nil }
+//        ImageListBenchmark()
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//            .transaction { $0.animation = nil }
+//        .background(Color(.white))
+        GridViewBenchmark()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .transaction { $0.animation = nil }
+                    .background(Color(.white))
     }
 }
 

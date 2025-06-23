@@ -33,7 +33,6 @@ struct HorizontalImageList: View {
             }
             .padding(.horizontal)
         }
-        .background(Color(.white))
     }
 }
 
